@@ -1,4 +1,4 @@
-type Orientation = "N" | "E" | "W" | "S";
+export type Orientation = "N" | "E" | "W" | "S";
 
 export interface Location {
     x: number

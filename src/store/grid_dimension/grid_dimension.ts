@@ -1,6 +1,6 @@
 type GridStatus = "Clean" | "Dirty";
 
-type GridCoordinates = {
+export type GridCoordinates = {
     x: number,
     y: number
 }
@@ -13,5 +13,5 @@ export type GridBlock = {
 export interface GridDimension {
     x: number | undefined
     y: number | undefined
-    gridlist: GridBlock[]
+    gridlist: GridBlock[] | undefined
 }

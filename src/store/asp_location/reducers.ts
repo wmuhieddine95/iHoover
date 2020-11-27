@@ -39,6 +39,7 @@ import {
                 orientation: "S"
             }
         }
+        break;
       case HANDLE_D:
         switch(state.orientation){
             case "N": return {
@@ -60,28 +61,52 @@ import {
         }
       case HANDLE_A:
         switch(state.orientation){
-            case "N": return {
-                ...state,
-                y: state.y+1
-            }
-            case "E": return {
-                ...state,
-                x: state.x+1
-            }
-            case "S": return {
-                ...state,
-                y: state.y-1
-            }
-            case "W": return {
-                ...state,
-                x: state.x-1
-            }        
-        }
+            case "N": 
+            console.log("orient:" + state.orientation)
+            if(action.payload.y!==undefined){
+                if(state.y < action.payload.y){
+                    const newY= state.y+1
+                    return {
+                        ...state,
+                        y: newY
+                    }        
+                }    
+            }break;
+            case "E": 
+            if(action.payload.x){
+                if(state.x < action.payload.x){
+                    return {
+                        ...state,
+                        x: state.x+1
+                    }
+                }
+            }break;
+            case "S": 
+            if(action.payload.y){
+                if(state.y > 0){
+                    return {
+                        ...state,
+                        y: state.y-1
+                    }
+                }
+            }break;
+            case "W": 
+            if(action.payload.x){
+                if(state.x > 0){
+                    return {
+                        ...state,
+                        x: state.x-1
+                    }                
+                }
+            }break;
+        }return state;
       case INITIALIZE_LOCATION:
           return{
+              ...state,
               ...action.payload
-          }
+          } 
       default:
         return state
     }
   }
+  

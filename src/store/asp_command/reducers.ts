@@ -22,10 +22,9 @@ import {
           commands: [...state.commands, action.payload]
         }
       case EXECUTE_COMMAND:
-        const toExecute = state.commands[0]
         return {
           commands: [...state.commands.filter((command, index) => {
-            index > 0 
+            return index > 0 
           })
         ]
         }
